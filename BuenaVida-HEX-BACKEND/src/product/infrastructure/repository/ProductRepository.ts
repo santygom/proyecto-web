@@ -356,12 +356,12 @@ export default class ProductRepository implements ProductRepositoryPort {
   public async patch(id: string, item: Partial<Product>): Promise<Product | boolean> {
     const index = this.products.findIndex(product => product.getId() === id);
     if (index === -1) {
-      return false;
+        return false;
     }
-    
-    this.products[index] = { ...this.products[index], ...item } as any;
-    return this.products[index];
-  }
+    this.products[index] = { ...this.products[index], ...item } as Product;
+    return this.products[index] ?? false; 
+}
+
 
   public async delete(id: string): Promise<boolean> {
     const initialLength = this.products.length;

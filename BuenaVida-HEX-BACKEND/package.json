@@ -9,7 +9,16 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["hexagonal", "clean-architecture", "typescript", "express", "ecommerce"],
+  "keywords": [
+    "hexagonal",
+    "clean-architecture",
+    "typescript",
+    "express",
+    "ecommerce"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
 }

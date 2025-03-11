@@ -1,6 +1,7 @@
-import 'dotenv/config';
+
+import dotenv from 'dotenv';
 import ServerFactory from './express/infrastructure/factory/ServerFactory';
 
-// Crear y arrancar el servidor
+dotenv.config();
 const server = ServerFactory.createServer();
 server.start();
