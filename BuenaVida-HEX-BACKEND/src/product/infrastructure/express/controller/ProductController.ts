@@ -24,8 +24,8 @@ export default class ProductController implements ProductControllerExpressInterf
   }
 
   getProductById(req: Request, res: Response): void {
-    const id = req.params.id
-    this.productUseCase.getProductById(id)
+    const id = req.params['id']
+    this.productUseCase.getProductById(id as string)
       .then(product => {
         if (product.isNull()) {
           res.status(404).send('Product not found')
@@ -41,8 +41,8 @@ export default class ProductController implements ProductControllerExpressInterf
   }
 
   getProductsByCategory(req: Request, res: Response): void {
-    const categoryId = req.params.categoryId
-    this.productUseCase.getProductsByCategory(categoryId)
+    const categoryId = req.params['categoryId']
+    this.productUseCase.getProductsByCategory(categoryId as string)
       .then(products => {
         const products_json = ProductsToJson.get(products)
 
@@ -76,7 +76,7 @@ export default class ProductController implements ProductControllerExpressInterf
   }
 
   searchProducts(req: Request, res: Response): void {
-    const term = req.query.term as string
+    const term = req.query['term'] as string
     if (!term) {
       res.status(400).json({ error: 'Search term is required' })
       return
